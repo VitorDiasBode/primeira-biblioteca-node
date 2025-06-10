@@ -6,5 +6,24 @@ const link = caminhoDoArquivo[2];
 console.log(link)
 
 fs.readFile(link, 'utf-8', (erro, texto) => {
-    console.log(texto);
+    verificarPalavras(texto);
 })
+
+// criar um array com as palavras
+// contar as ocorrencias
+// montar um objeto com o resultado
+// { 
+//   web: 5,
+//   internet: 4
+// }
+
+function verificarPalavras(texto){
+    const listaPalavras = texto.split(' ');
+    const resultado = {};
+
+    listaPalavras.forEach(palavra => {
+        resultado[palavra] = (resultado[palavra] || 0) + 1
+    });
+    console.log(resultado);
+}
+
