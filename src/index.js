@@ -6,7 +6,8 @@ const link = caminhoDoArquivo[2];
 console.log(link)
 
 fs.readFile(link, 'utf-8', (erro, texto) => {
-    verificarPalavras(texto);
+    console.log(quebraEmParagrafos(texto));
+    // verificarPalavras(texto);
 })
 
 // criar um array com as palavras
@@ -17,6 +18,15 @@ fs.readFile(link, 'utf-8', (erro, texto) => {
 //   internet: 4
 // }
 
+function quebraEmParagrafos(texto){
+    const paragrafos = texto.toLowerCase().split('\n');
+    const contagem = paragrafos.map( paragrafo => {
+        return verificarPalavras(paragrafo);
+    });
+
+    return contagem
+}
+
 function verificarPalavras(texto){
     const listaPalavras = texto.split(' ');
     const resultado = {};
@@ -24,6 +34,6 @@ function verificarPalavras(texto){
     listaPalavras.forEach(palavra => {
         resultado[palavra] = (resultado[palavra] || 0) + 1
     });
-    console.log(resultado);
+    return resultado;
 }
 
