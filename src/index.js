@@ -7,7 +7,6 @@ console.log(link)
 
 fs.readFile(link, 'utf-8', (erro, texto) => {
     console.log(quebraEmParagrafos(texto));
-    // verificarPalavras(texto);
 })
 
 // criar um array com as palavras
@@ -32,8 +31,12 @@ function verificarPalavras(texto){
     const resultado = {};
 
     listaPalavras.forEach(palavra => {
-        resultado[palavra] = (resultado[palavra] || 0) + 1
+        const palavraLimpa = limpaPalavra(palavra);
+        resultado[palavraLimpa] = (resultado[palavraLimpa] || 0) + 1
     });
     return resultado;
 }
 
+function limpaPalavra(palavra){
+    return palavra.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+}
