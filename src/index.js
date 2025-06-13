@@ -1,30 +1,15 @@
-const fs = require('fs');
-
-const caminhoDoArquivo = process.argv;
-const link = caminhoDoArquivo[2];
-
-console.log(link)
-
-fs.readFile(link, 'utf-8', (erro, texto) => {
-    console.log(quebraEmParagrafos(texto));
-})
-
-// criar um array com as palavras
-// contar as ocorrencias
-// montar um objeto com o resultado
-// { 
-//   web: 5,
-//   internet: 4
-// }
-
-function quebraEmParagrafos(texto){
-    const paragrafos = texto.toLowerCase().split('\n');
+export function contaPalavras(texto){
+    const paragrafos = extraiParagrafos(texto);
     const contagem = paragrafos.flatMap( paragrafo => {
         if(!paragrafo) return[];
         return verificarPalavras(paragrafo);
     });
 
     return contagem;
+}
+
+function extraiParagrafos(texto){
+    return texto.toLowerCase().split('\n');
 }
 
 function verificarPalavras(texto){
