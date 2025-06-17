@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/VitorDiasBode/primeira-biblioteca-node/issues"
   },
-  "homepage": "https://github.com/VitorDiasBode/primeira-biblioteca-node#readme"
+  "homepage": "https://github.com/VitorDiasBode/primeira-biblioteca-node#readme",
+  "dependencies": {
+    "commander": "^14.0.0"
+  }
 }
